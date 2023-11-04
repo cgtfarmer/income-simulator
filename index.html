@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IncomeSimulator</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="main.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand">IncomeSimulator</a>
+      </div>
+    </nav>
+
+    <main class="container mt-4">
+      <div class="mb-4">
+        <div class="mb-3">
+          <label class="form-label" for="starting-capital">Starting Capital ($)</label>
+          <input type="number" class="form-control" id="starting-capital" min="0" step="1" value="0"/>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="monthly-contribution">Monthly Contribution ($)</label>
+          <input type="number" class="form-control" id="monthly-contribution" min="0" step="1" value="100"/>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="interest-rate">Interest Rate</label>
+          <input type="number" class="form-control" id="interest-rate" min="0" step="0.001" value="0.08"/>
+        </div>
+        <div class="mb-3" hidden>
+          <label class="form-label" for="token-price">Increments</label>
+          <select class="form-control" id="increments" onchange="changeIncrements();">
+            <option value="daily">Daily</option>
+            <option value="weekly" selected>Weekly</option>
+            <option value="monthly">Monthly</option>
+            <option value="yearly">Yearly</option>
+          </select>
+        </div>
+
+        <button class="btn btn-primary" onclick="simulate();">Simulate</button>
+      </div>
+
+      <div class="mb-4">
+        <button class="btn btn-primary" id="toggle-new-node-days" onclick="toggleNewNodeDays();" hidden>Toggle New Node Days</button>
+
+        <div class="table-responsive">
+          <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+              <th>Income</th>
+              <th>Year</th>
+              <th>Semiyear</th>
+              <th>Quarter</th>
+              <th>Month</th>
+              <th>Week</th>
+              <th>Day</th>
+            </thead>
+            <tbody id="results">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+
+    <footer class="bg-dark text-white mt-auto p-3">
+      <div class="container-fluid row text-center text-sm-left justify-content-around">
+        <div>
+          <h5>Contact Info</h5>
+          <ol class="list-unstyled">
+            <li>
+              <i class="fas fa-envelope mr-1"></i>
+              <a href="mailto:christian.gt.farmer@gmail.com">christian.gt.farmer@gmail.com</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="text-center text-white text-sm pb-1">
+        Copyright 2022
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
+
